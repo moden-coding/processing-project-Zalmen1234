@@ -38,6 +38,10 @@ public class App extends PApplet {
                 drawCloud(70, 70, 100);
                 drawCloud(400, 500, 200);
                 drawCloud(700, 200, 100);
+                fill(255,255,0);
+                textSize(48);
+                textAlign(CENTER,CENTER);
+                text("Rings: " + ringCount,700,500);
                 if (ringCount > 0) {
                     diameter2 += 2+ringCount;
                     stroke(255, 0, 0);
@@ -68,6 +72,12 @@ public class App extends PApplet {
                 drawCloud(400, 500, 200);
                 drawCloud(700, 200, 100);
 
+
+                fill(255,255,0);
+                textSize(48);
+                textAlign(CENTER,CENTER);
+                text("Rings: " + ringCount,700,500);
+
                 stroke(255, 0, 0);
                 strokeWeight(20);
                 fill(255, 0, 0, 0);
@@ -90,6 +100,14 @@ public class App extends PApplet {
 
         } else {
             background(0);
+            fill(255,255,0);
+            textSize(48);
+            textAlign(CENTER,CENTER);
+            text("Press R to restart",width/2,500);
+            fill(255,0,0);
+            textSize(75);
+            textAlign(CENTER,CENTER);
+            text("YOU LOSE",width/2,300);
 
         }
 
@@ -122,26 +140,36 @@ public class App extends PApplet {
     public void keyPressed() {
         if (firstRing == true) {
             if (keyCode == UP) {
-                y1 -= 10;
+                y1 -= 10+ringCount;
             } else if (keyCode == DOWN) {
-                y1 += 10;
+                y1 += 10+ringCount;
             } else if (keyCode == RIGHT) {
-                x1 += 10;
+                x1 += 10+ringCount;
             } else if (keyCode == LEFT) {
-                x1 -= 10;
+                x1 -= 10+ringCount;
             }
+            
+
         }
 
         if (firstRing == false) {
             if (keyCode == UP) {
-                y2 -= 10;
+                y2 -= 10+ringCount;
             } else if (keyCode == DOWN) {
-                y2 += 10;
+                y2 += 10+ringCount;
             } else if (keyCode == RIGHT) {
-                x2 += 10;
+                x2 += 10+ringCount;
             } else if (keyCode == LEFT) {
-                x2 -= 10;
+                x2 -= 10+ringCount;
             }
+        }
+        if ((keyCode=='r'||keyCode=='R')){
+            ringCount=0;
+            setup();
+            running=true;
+            
+            
+            
         }
     }
 }
